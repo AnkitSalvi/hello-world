@@ -39,16 +39,17 @@
 <script ></script>
 
   <script>
+    
+     var options = {
+          zoom:8,
+          center:{lat:42.3601,lng:-71.0589}
+        }
+
+        var map = new 
+        google.maps.Map(document.getElementById('map'), options);
+
     var locations = [];
      function myFunction(){
-      window.addEventListener('load', () => {
-        const la = localStorage.getItem('lattitue');
-        const lo = localStorage.getItem('Longitude');
-
-        console.log(la);
-        console.log(lo);
-
-      })
       window.location = "https://ankitsalvi.github.io/hello-world/map4.html";
      }
 
