@@ -39,31 +39,21 @@
 <script ></script>
 
   <script>
-    
-     var options = {
-          zoom:8,
-          center:{lat:42.3601,lng:-71.0589}
-        }
-
-        var map = new 
-        google.maps.Map(document.getElementById('map'), options);
-
     var locations = [];
      function myFunction(){
       window.location = "https://ankitsalvi.github.io/hello-world/map4.html";
      }
 
-      function initMap(){
+    function initMap(){
 
-     var options = {
+
+  var options = {
           zoom:8,
           center:{lat:42.3601,lng:-71.0589}
         }
 
         var map = new 
         google.maps.Map(document.getElementById('map'), options);
-
-    
 
 
     var searchInput = 'search_input';
@@ -79,48 +69,17 @@
         document.getElementById('loc_lat').value = near_place.geometry.location.lat();
         document.getElementById('loc_long').value = near_place.geometry.location.lng();
 
-        var latt = near_place.geometry.location.lat();
-        var longg = near_place.geometry.location.lng();
-        console.log(localStorage.getItem('lal'));
-
-        window.addEventListener('load', () => {
-        const la = localStorage.getItem('lattitue');
-        const lo = localStorage.getItem('longitude');
-
-      })
-
-         var options = {
-          zoom:8,
-          center:{lat:latt,lng:longg}
-        }
-
-        var map = new 
-        google.maps.Map(document.getElementById('map'), options);
-
-        var marker = new google.maps.Marker({
-          position:{lat:latt,lng:longg},
-          map:map,
-          icon:''
-        })
-
-
        
     
         document.getElementById('latitude_view').innerHTML = near_place.geometry.location.lat();
         document.getElementById('longitude_view').innerHTML = near_place.geometry.location.lng();
     });
-     console.log(localStorage["lattitue"]);
-    console.log(localStorage["longitude"]);
-
     
-
 
     var lati = parseFloat(localStorage["lattitue"]);
     var langi = parseFloat(localStorage["longitude"]);
     locations.push(lati);
     locations.push(langi);
-
-    
 
 
     var options = {
