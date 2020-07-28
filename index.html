@@ -13,35 +13,58 @@
         height: 400px;
         width:100%;
       }
+
+              .header {
+
+  padding: 10px;
+  text-align: center;
+  background: #ff0000;
+  color: white;
+  font-size: 20px;
+
+}
+.box{
+  text-align: center;
+  margin-top: 10px;
+}
+
+.button-container-div{
+   text-align: center;
+   border: 1px solid;
+   margin-left: 50%;
+   margin-top: 15px;
+
+}
     </style>
 
 
   </head>
   <body>
-    <h1>My Google Maps</h1>
+
+  <div class="header">
+  <h5>Demo</h5>
+</div>
+    <h1></h1>
     <div id="map"></div>
 
 
-<div class="form-group">
+<div class="box">
     <label>Location:</label>
     <input type="text" class="form-control" id="search_input" placeholder="Type address..." />
     <input type="hidden" id="loc_lat" />
     <input type="hidden" id="loc_long" />
 </div>
 
-<div class="latlong-view">
-    <p><b>Latitude:</b> <span id="latitude_view"></span></p>
-    <p><b>Longitude:</b> <span id="longitude_view"></span></p>
-</div>
 
-<button type="button" onclick="myFunction()">Next</button>
+
+<button type="button" class="button-container-div" onclick="myFunction()">Next</button>
 
 <script ></script>
 
   <script>
     var locations = [];
      function myFunction(){
-      window.location = "https://ankitsalvi.github.io/hello-world/map4.html";
+      window.location = "map4.html";
      }
 
     function initMap(){
@@ -73,7 +96,20 @@
 
 
 
+          var options = {
+          zoom:8,
+          center:{lat:near_place.geometry.location.lat(),lng:near_place.geometry.location.lng()}
+        }
 
+        var map = new 
+        google.maps.Map(document.getElementById('map'), options);
+
+
+        var marker = new google.maps.Marker({
+          position:{lat:near_place.geometry.location.lat(),lng:near_place.geometry.location.lng()},
+          map:map,
+          icon:''
+        })
        
     
         document.getElementById('latitude_view').innerHTML = near_place.geometry.location.lat();
@@ -84,12 +120,6 @@
     var lati = parseFloat(localStorage["lattitue"]);
     var langi = parseFloat(localStorage["longitude"]);
 
-    sessionStorage
-    locations.push(lati);
-    locations.push(langi);
-
-
-
 
     var options = {
           zoom:8,
@@ -99,12 +129,11 @@
         var map = new 
         google.maps.Map(document.getElementById('map'), options);
 
-        for(var i=0;i<locations.length;i=i+2)
-        console.log(locations);
+
         var marker = new google.maps.Marker({
           position:{lat:parseFloat(lati),lng:parseFloat(langi)},
           map:map,
-          icon:'https://developers.google.com/maps/documentation/javascript/examples/full/images/beachflag.png'
+          icon:''
         })
 
 
