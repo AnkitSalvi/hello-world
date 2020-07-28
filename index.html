@@ -66,6 +66,21 @@
      function myFunction(){
       window.location = "map4.html";
      }
+    var options = {
+          zoom:8,
+          center:center:{lat:42.3601,lng:-71.0589}
+        }
+
+        var map = new 
+        google.maps.Map(document.getElementById('map'), options);
+
+
+        var marker = new google.maps.Marker({
+          position:center:{lat:42.3601,lng:-71.0589},
+          map:map,
+          icon:''
+        })
+       
 
     function initMap(){
 
