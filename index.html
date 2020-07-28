@@ -41,11 +41,13 @@
   <script>
     var locations = [];
      function myFunction(){
-      window.location = "https://ankitsalvi.github.io/hello-world/map4.html";
+      window.location = "map4.html";
      }
 
     function initMap(){
 
+   
+    
 
   var options = {
           zoom:8,
@@ -69,17 +71,24 @@
         document.getElementById('loc_lat').value = near_place.geometry.location.lat();
         document.getElementById('loc_long').value = near_place.geometry.location.lng();
 
+
+
+
        
     
         document.getElementById('latitude_view').innerHTML = near_place.geometry.location.lat();
         document.getElementById('longitude_view').innerHTML = near_place.geometry.location.lng();
     });
     
-
+    
     var lati = parseFloat(localStorage["lattitue"]);
     var langi = parseFloat(localStorage["longitude"]);
+
+    sessionStorage
     locations.push(lati);
     locations.push(langi);
+
+
 
 
     var options = {
@@ -90,10 +99,12 @@
         var map = new 
         google.maps.Map(document.getElementById('map'), options);
 
+        for(var i=0;i<locations.length;i=i+2)
+        console.log(locations);
         var marker = new google.maps.Marker({
-          position:{lat:parseFloat(localStorage["lattitue"]),lng:parseFloat(localStorage["longitude"])},
+          position:{lat:parseFloat(lati),lng:parseFloat(langi)},
           map:map,
-          icon:''
+          icon:'https://developers.google.com/maps/documentation/javascript/examples/full/images/beachflag.png'
         })
 
 
