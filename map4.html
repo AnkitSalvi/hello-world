@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>
+      window.location
+    </title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
+    <meta charset="utf-8">
+    <style>
+      /* Always set the map height explicitly to define the size of the div
+       * element that contains the map. */
+      #map {
+        height: 100%;
+        width:100%;
+      }
+    </style>
+
+
+  </head>
+  <body>
+    <h1>My Google Maps</h1>
+    <div id="map"></div>
+
+
+<div class="form-group">
+    <label>Location:</label>
+    <input type="text" class="form-control" id="search_input" placeholder="Type address..." />
+    <input type="hidden" id="loc_lat" />
+    <input type="hidden" id="loc_long" />
+</div>
+
+<div class="latlong-view">
+    <p><b>Latitude:</b> <span id="latitude_view"></span></p>
+    <p><b>Longitude:</b> <span id="longitude_view"></span></p>
+</div>
+
+
+<button type="button" onclick="myFunc()">Next Page</button>
+
+  <script>
+    function myFunc(){
+      window.location = "index.html";
+    }
+
+      function initMap(){
+
+    var searchInput = 'search_input';
+    var autocomplete;
+     autocomplete = new google.maps.places.Autocomplete
+     (
+      (document.getElementById(searchInput)), 
+      {
+        types: ['geocode'],
+     });
+  
+    google.maps.event.addListener(autocomplete, 'place_changed', function () {
+        var near_place = autocomplete.getPlace();
+        document.getElementById('loc_lat').value = near_place.geometry.location.lat();
+        document.getElementById('loc_long').value = near_place.geometry.location.lng();
+
+        var latt = near_place.geometry.location.lat();
+        var longg = near_place.geometry.location.lng();
+        //console.log(latt);
+  
+      
+    
+        document.getElementById('latitude_view').innerHTML = near_place.geometry.location.lat();
+        document.getElementById('longitude_view').innerHTML = near_place.geometry.location.lng();
+
+
+        //localStorage.setItem('lattitue',near_place.geometry.location.lat())
+        //localStorage.setItem('Longitude',near_place.geometry.location.lng())
+        localStorage["lattitue"] = near_place.geometry.location.lat();
+        localStorage["longitude"] = near_place.geometry.location.lng();
+        localStorage.setItem('lal',"hello");
+
+
+       
+    });
+
+
+      
+      }
+    </script>
+
+
+    <script async defer
+    src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBzzJCOHk8vS0synUZCM5qmnz72VSKsMok&libraries=places&callback=initMap">
+    </script>
+
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+   
+    
+  </body>
+</html>
